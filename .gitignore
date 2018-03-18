@@ -1,0 +1,9 @@
+node_modules
+lib
+types
+*.md
+generator.js
+index.js
+prompts.js
+rules.js
+tool/*.js

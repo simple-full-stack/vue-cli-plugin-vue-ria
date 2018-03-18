@@ -1,0 +1,7 @@
+{
+    "extends": ["tslint:recommend"],
+    "rules": {
+        "quotemark": [true, "single"],
+        "no-submodule-imports": false
+    }
+}

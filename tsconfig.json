@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "traceResolution": true,
+        "version": true,
+        "experimentalDecorators": true,
+        "module": "CommonJS",
+        "target": "esnext",
+        "lib": [
+            "es2015"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "lib",
+        "bin"
+    ],
+    "include": [
+        "./**/*.ts"
+    ]
+}
