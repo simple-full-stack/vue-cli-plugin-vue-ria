@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>侧边栏收起</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="规范" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标" transform="translate(-675.000000, -141.000000)" fill="#333333">
+            <path d="M676.908232,148 L678.568713,149.660481 L677.861606,150.367587 L675.72554,148.231521 L675.710793,148.246267 L675.003687,147.53916 L675.018433,147.524414 L675.003687,147.509668 L675.710793,146.802561 L675.72554,146.817307 L677.861606,144.681241 L678.568713,145.388348 L676.95706,147 L689,147 L689,148 L676.908232,148 Z M680.916583,142 L689,142 L689,143 L680.916583,143 L680.916583,142 Z M680.916583,152 L689,152 L689,153 L680.916583,153 L680.916583,152 Z" id="侧边栏收起"></path>
+        </g>
+    </g>
+</svg>

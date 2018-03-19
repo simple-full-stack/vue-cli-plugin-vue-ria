@@ -6,15 +6,11 @@
         },
         "@vue/cli-plugin-eslint": {
             "version": "^3.0.0-beta.6",
-            "config": "prettier",
             "lintOn": [
                 "save"
             ]
         },
         "@vue/cli-plugin-unit-jest": {
-            "version": "^3.0.0-beta.6"
-        },
-        "@vue/cli-plugin-e2e-cypress": {
             "version": "^3.0.0-beta.6"
         },
         "@baidu/vue-cli-plugin-ve-ria": {

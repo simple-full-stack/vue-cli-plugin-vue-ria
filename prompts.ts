@@ -1,4 +1,4 @@
-export default [
+export = [
     // {
     //     name: 'entry',
     //     type: 'input',

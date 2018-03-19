@@ -1,9 +1,16 @@
 import rules from './rules';
-import proxy from './tool/proxy';
-import mockup from './tool/mockup';
+import {remove} from 'lodash';
 
-export default function (api, {entry = ''} = {}) {
-    const entryList = entry.trim().split(/\s+/);
+export = function (api, {entry = ''} = {}) {
+    // 删除掉内置插件生成的所有 src 内容
+    remove(
+        api.generator.files,
+        (file: string): boolean => {
+            return file.indexOf(api.resolve('src')) > -1
+                || file.indexOf(api.resolve('tests')) > -1
+                || file.indexOf(api.resolve('public')) > -1;
+        }
+    );
 
     api.render('./template');
 
@@ -38,26 +45,22 @@ export default function (api, {entry = ''} = {}) {
             ]
         },
         postcss: {
-            "plugins": {
-                "autoprefixer": {},
-                "cssnano": {
-                    "autoprefixer": false,
-                    "safe": true
+            plugins: {
+                autoprefixer: {},
+                cssnano: {
+                    autoprefixer: false,
+                    safe: true
                 }
             }
         },
         vue: {
             pluginOptions: {
-                entries: {
-                    client: {
-                        title: '[页面标题]'
+                '@baidu/vue-cli-plugin-ve-ria': {
+                    entries: {
+                        client: {
+                            title: '[页面标题]'
+                        }
                     }
-                }
-            },
-            devServer: {
-                before(app) {
-                    proxy(app, this.proxy);
-                    mockup(app, api.resolve.bind(api));
                 }
             }
         },

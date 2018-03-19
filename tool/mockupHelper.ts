@@ -117,4 +117,4 @@ class Mockup {
     }
 }
 
-module.exports = new Mockup(path.resolve(__dirname, '../../../'));
+export = new Mockup(path.resolve(__dirname, '../../../'));

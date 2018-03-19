@@ -1,0 +1,85 @@
+@import "./lib.less";
+
+.error-view {
+    text-align: center;
+    color: @ria-text-color-normal;
+    h3 {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 12px 0 15px 10px;
+        color: @ria-text-color-normal;
+    }
+    p {
+        color: @ria-text-color-aux;
+        font-size: 13px;
+        margin-bottom: 40px;
+    }
+    &-img {
+        width: 629px;
+        height: 250px;
+        margin: 0 auto;
+        background-size: 629px 250px;
+    }
+    &-403 {
+        background-image: url(../img/403.png);
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            background-image: url(../img/403@2x.png);
+        }
+    }
+    &-404 {
+        background-image: url(../img/404.png);
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            background-image: url(../img/404@2x.png);
+        }
+    }
+    &-500 {
+        background-image: url(../img/500.png);
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            background-image: url(../img/500@2x.png);
+        }
+    }
+    &-button {
+        display: inline-block;
+        color: @ria-text-color-normal !important;
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+        width: 100px;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+        margin: 0 40px;
+        cursor: pointer;
+        text-align: center;
+
+        svg {
+            vertical-align: -3px;
+            margin-right: 5px;
+            color: @ria-text-color-aux;
+        }
+    }
+    &-home {
+        // .muses-icon('home');
+        &::before {
+            color: @ria-text-color-aux;
+            margin-right: 6px;
+        }
+    }
+    &-back {
+        // .muses-icon(caret-left);
+        &::before {
+            color: @ria-text-color-aux;
+            margin-left: -6px;
+            font-size: 24px;
+            line-height: 16px;
+            vertical-align: text-top;
+        }
+    }
+    &-refresh {
+        // .muses-icon(refresh);
+        &::before {
+            color: @ria-text-color-aux;
+            margin-right: 6px;
+        }
+    }
+}

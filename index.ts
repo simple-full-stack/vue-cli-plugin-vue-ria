@@ -1,4 +1,7 @@
 import addEntry from './tool/addEntry';
+import proxy from './tool/proxy';
+import mockup from './tool/mockup';
+import {each} from 'lodash';
 
 function eslint(api, projectOptions, webpackConfig) {
     webpackConfig.module
@@ -6,6 +9,7 @@ function eslint(api, projectOptions, webpackConfig) {
             .use('eslint-loader')
                 .loader('eslint-loader')
                 .tap(options => {
+                    options = options || {};
                     options.rules = options.rules || {};
                     options.rules['no-console'] = process.env.NODE_ENV === 'production' ? 1 : 0;
                     return options;
@@ -13,11 +17,11 @@ function eslint(api, projectOptions, webpackConfig) {
 }
 
 function entry(api, projectOptions, webpackConfig) {
-    const entries = projectOptions.entries;
-    if (!entries || !entries.length) {
+    const entries = projectOptions.pluginOptions['@baidu/vue-cli-plugin-ve-ria'].entries;
+    if (!entries || !Object.keys(entries).length) {
         throw new Error('No entry.');
     }
-    projectOptions.entries.forEach((config, name) => {
+    each(entries, (config, name) => {
         addEntry(webpackConfig, name, api.resolve.bind(api));
     });
 }
@@ -131,7 +135,17 @@ function less(api, projectOptions, webpackConfig) {
                 });
 }
 
-export default function (api, projectOptions) {
+export = function (api, projectOptions) {
+    const prevBefore = projectOptions.devServer.before;
+    projectOptions.devServer.before = function (app) {
+        proxy(app, this.proxy);
+        mockup(app, api.resolve.bind(api));
+
+        if (typeof prevBefore === 'function') {
+            prevBefore(app);
+        }
+    };
+
     api.chainWebpack((webpackConfig) => {
         eslint(api, projectOptions, webpackConfig);
         entry(api, projectOptions, webpackConfig);
