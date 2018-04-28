@@ -1,9 +1,6 @@
 {
     "useConfigFiles": true,
     "plugins": {
-        "@vue/cli-plugin-babel": {
-            "version": "^3.0.0-beta.6"
-        },
         "@vue/cli-plugin-eslint": {
             "version": "^3.0.0-beta.6",
             "lintOn": [
