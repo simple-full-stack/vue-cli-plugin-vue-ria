@@ -7,9 +7,6 @@
                 "save"
             ]
         },
-        "@vue/cli-plugin-unit-jest": {
-            "version": "^3.0.0-beta.6"
-        },
         "@baidu/vue-cli-plugin-ve-ria": {
             "version": "^0.0.1"
         }
