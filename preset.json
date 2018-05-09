@@ -1,12 +1,6 @@
 {
   "useConfigFiles": true,
   "plugins": {
-    "@vue/cli-plugin-eslint": {
-      "version": "^3.0.0-beta.9",
-      "lintOn": [
-        "save"
-      ]
-    },
     "vue-cli-plugin-vue-ria": {
       "version": "^0.0.1"
     }
