@@ -1,16 +1,16 @@
 {
-    "useConfigFiles": true,
-    "plugins": {
-        "@vue/cli-plugin-eslint": {
-            "version": "^3.0.0-beta.6",
-            "lintOn": [
-                "save"
-            ]
-        },
-        "@baidu/vue-cli-plugin-ve-ria-vuex": {
-            "version": "^0.0.1"
-        }
+  "useConfigFiles": true,
+  "plugins": {
+    "@vue/cli-plugin-eslint": {
+      "version": "^3.0.0-beta.6",
+      "lintOn": [
+        "save"
+      ]
     },
-    "router": true,
-    "cssPreprocessor": "less"
+    "vue-cli-plugin-vue-ria": {
+      "version": "^0.0.1"
+    }
+  },
+  "router": true,
+  "cssPreprocessor": "less"
 }
