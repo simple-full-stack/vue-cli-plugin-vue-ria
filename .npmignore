@@ -1,6 +1,8 @@
 node_modules
-src
 tsconfig.json
 tslint.json
 *.md
 *.ts
+.vscode
+.editorconfig
+!template/**/*.ts

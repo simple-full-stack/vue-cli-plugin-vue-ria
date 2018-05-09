@@ -2,138 +2,17 @@ import addEntry from './tool/addEntry';
 import proxy from './tool/proxy';
 import mockup from './tool/mockup';
 import {each} from 'lodash';
-
-function eslint(api, projectOptions, webpackConfig) {
-    webpackConfig.module
-        .rule('eslint')
-            .use('eslint-loader')
-                .loader('eslint-loader')
-                .tap(options => {
-                    options = options || {};
-                    options.rules = options.rules || {};
-                    options.rules['no-console'] = process.env.NODE_ENV === 'production' ? 1 : 0;
-                    return options;
-                });
-}
-
-function entry(api, projectOptions, webpackConfig) {
-    const entries = projectOptions.pluginOptions['@baidu/vue-cli-plugin-ve-ria'].entries;
-    if (!entries || !Object.keys(entries).length) {
-        throw new Error('No entry.');
-    }
-    each(entries, (config, name) => {
-        addEntry(webpackConfig, name, api.resolve.bind(api));
-    });
-}
-
-function staticAssets(api, projectOptions, webpackConfig) {
-    if (process.env.NODE_ENV === 'production') {
-        webpackConfig.plugin('copy').tap(() => [[{
-            from: api.resolve('static'),
-            to: api.resolve('dist/static'),
-            ignore: ['.*']
-        }]]);
-    }
-}
-
-function veui(api, projectOptions, webpackConfig) {
-    webpackConfig.module
-        .rule('veui')
-            .test(/\.vue$/)
-            .pre()
-            .include
-                .add(api.resolve('node_modules/veui'))
-                .end()
-            .use('veui')
-                .loader('veui-loader')
-                .options({
-                    modules: [
-                        {
-                            package: 'veui-theme-one',
-                            fileName: '${module}.less'
-                        },
-                        {
-                            package: 'veui-theme-one',
-                            fileName: '${module}.js',
-                            transform: false
-                        }
-                    ]
-                });
-
-    webpackConfig.module
-        .rule('js')
-            .include
-                .add(api.resolve('node_modules/veui'));
-}
-
-function svg(api, projectOptions, webpackConfig) {
-    webpackConfig.module
-        .rule('svg')
-            .exclude
-                .add(api.resolve('assets/icons'))
-                .add(api.resolve('node_modules/ve-ria/assets'))
-                .add(api.resolve('src/common/ve-ria/assets'))
-                .add(api.resolve('node_modules/veui-theme-one/assets'))
-                .end();
-
-    webpackConfig.module
-        .rule('svg-no-color')
-            .test(/\.svg$/)
-            .include
-                .add(api.resolve('assets/icons'))
-                .add(api.resolve('node_modules/ve-ria/assets'))
-                .add(api.resolve('src/common/ve-ria/assets'))
-                .add(api.resolve('node_modules/veui-theme-one/assets'))
-                .end()
-            .use('svg-no-color')
-                .loader('@baidu/svg-icons-loader')
-                .options({clearAllColor: true});
-
-    webpackConfig.module
-        .rule('svg-no-color')
-            .test(/\.svg$/)
-            .include
-                .add(api.resolve('assets'))
-                .end()
-            .exclude
-                .add(api.resolve('assets/icons'))
-                .end()
-            .use('svg-no-color')
-                .loader('@baidu/svg-icons-loader')
-                .options({clearAllColor: true});
-}
-
-function inject(api, projectOptions, webpackConfig) {
-    webpackConfig.module
-        .rule('vue')
-            .use('vue-loader')
-                .tap(options => {
-                    options.loaders.less.push({
-                        loader: 'style-resources-loader',
-                        options: {
-                            patterns: [api.resolve('src/common/css/inject.less')],
-                            injector: 'append'
-                        }
-                    });
-                    return options;
-                });
-}
-
-function less(api, projectOptions, webpackConfig) {
-    webpackConfig.module
-        .rule('vue')
-            .use('vue-loader')
-                .tap(options => {
-                    options.loaders.less.push({
-                        loader: 'style-resources-loader',
-                        options: {
-                            patterns: [api.resolve('src/common/css/inject.less')],
-                            injector: 'append'
-                        }
-                    });
-                    return options;
-                });
-}
+import getEnv from './tool/getEnv';
+import eslint from './chain/eslint';
+import entry from './chain/entry';
+import staticAssets from './chain/staticAssets';
+import veui from './chain/veui';
+import svg from './chain/svg';
+import inject from './chain/inject';
+import less from './chain/less';
+import plugin from './chain/plugin';
+import babel from './chain/babel';
+import alias from './chain/alias';
 
 export = function (api, projectOptions) {
     const prevBefore = projectOptions.devServer.before;
@@ -154,7 +33,10 @@ export = function (api, projectOptions) {
         svg(api, projectOptions, webpackConfig);
         inject(api, projectOptions, webpackConfig);
         less(api, projectOptions, webpackConfig);
+        babel(api, projectOptions, webpackConfig);
+        plugin(api, projectOptions, webpackConfig);
+        alias(api, projectOptions, webpackConfig);
 
-        webpackConfig.devtool('cheap-eval-source-map');
+        webpackConfig.devtool('eval-source-map');
     });
 };
