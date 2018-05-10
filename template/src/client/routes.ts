@@ -1,4 +1,4 @@
-import ClientPath from './views/PathView.vue';
+import ClientPath from './views/PathView';
 
 export default {
   client: [
