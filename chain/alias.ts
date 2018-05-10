@@ -1,7 +1,7 @@
 import {each} from 'lodash';
 
 export default function alias(api, projectOptions, webpackConfig) {
-    const pluginOptions = projectOptions.pluginOptions[require('./package.json').name];
+    const pluginOptions = projectOptions.pluginOptions[require('../package.json').name];
     const extraAlias = pluginOptions.extraAlias || {};
     each(extraAlias, (val, key) => {
         webpackConfig.resolve.alias.set(key, val);

@@ -2,7 +2,7 @@ import getEntryTemplate from './getEntryTemplate';
 import getEnv from './getEnv';
 
 export default function addEntry(webpackConfig, name, resolve, config) {
-    webpackConfig.entry(name).add(resolve(`src/${name}/main.js`)).end();
+    webpackConfig.entry(name).add(resolve(`src/${name}/main.ts`)).end();
 
     if (process.env.NODE_ENV === 'development') {
         webpackConfig.plugin(`html-${name}`).use(

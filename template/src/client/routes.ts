@@ -1,8 +1,10 @@
-import ClientPath from './views/PathView';
+import ClientPath from './views/PathView.vue';
 
-export default [
-  {
-    path: '/path1',
-    component: ClientPath
-  }
-];
+export default {
+  client: [
+    {
+      path: '/path1',
+      component: ClientPath,
+    },
+  ],
+};

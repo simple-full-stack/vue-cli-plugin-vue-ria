@@ -6,3 +6,4 @@ tslint.json
 .vscode
 .editorconfig
 !template/**/*.ts
+!template/tsconfig.json

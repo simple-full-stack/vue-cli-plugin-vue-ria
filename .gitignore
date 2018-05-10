@@ -7,3 +7,4 @@ index.js
 prompts.js
 rules.js
 tool/*.js
+chain/*.js

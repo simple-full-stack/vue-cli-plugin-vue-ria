@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import {createView, AppView} from 'sfs-vue-ria';
+import { createView, AppView } from 'sfs-vue-ria';
 import appModule from './appModule';
 
 export default createView(AppView, appModule, {
   // 改成自己的名称
-  name: 'app-name-app-view'
+  name: 'app-name-app-view',
 });
 </script>
 

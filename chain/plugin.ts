@@ -6,7 +6,7 @@ import * as OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 export default function plugin(api, projectOptions, webpackConfig) {
-    const pluginOptions = projectOptions.pluginOptions[require('./package.json').name];
+    const pluginOptions = projectOptions.pluginOptions[require('../package.json').name];
 
     [
         'preload',

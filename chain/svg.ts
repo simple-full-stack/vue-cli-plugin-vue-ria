@@ -18,7 +18,7 @@ export default function svg(api, projectOptions, webpackConfig) {
                 .add(api.resolve('node_modules/veui-theme-one/assets'))
                 .end()
             .use('svg-no-color')
-                .loader('@baidu/svg-icons-loader')
+                .loader('sfs-svg-icons-loader')
                 .options({clearAllColor: true});
 
     webpackConfig.module
@@ -31,6 +31,6 @@ export default function svg(api, projectOptions, webpackConfig) {
                 .add(api.resolve('assets/icons'))
                 .end()
             .use('svg-no-color')
-                .loader('@baidu/svg-icons-loader')
+                .loader('sfs-svg-icons-loader')
                 .options({clearAllColor: true});
 }

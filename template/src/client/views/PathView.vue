@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import {createView, BaseView} from 'sfs-vue-ria';
+import { createView, BaseView } from 'sfs-vue-ria';
 import pathModule from './pathModule';
 
 export default createView(BaseView, pathModule, {
-  name: 'path-view'
+  name: 'path-view',
 });
 </script>
 
