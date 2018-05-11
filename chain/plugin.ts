@@ -57,7 +57,7 @@ export default function plugin(api, projectOptions, webpackConfig) {
                             module.resource &&
                             /\.js$/.test(module.resource) &&
                             module.resource.indexOf(
-                                this.resolve('node_modules')
+                                api.resolve('node_modules')
                             ) === 0
                         );
                     }

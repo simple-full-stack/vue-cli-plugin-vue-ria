@@ -20,7 +20,8 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "jsx": "preserve"
   },
   "include": [
     "src/**/*.ts",

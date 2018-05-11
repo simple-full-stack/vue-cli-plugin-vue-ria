@@ -7,6 +7,10 @@ const clientNav: INav = {
       url: '/path1',
       include: /\/path1/,
     },
+    {
+      text: '表单',
+      url: '/form',
+    },
   ],
 };
 
